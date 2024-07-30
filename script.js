@@ -24,7 +24,6 @@ function getCity(event) {
     let windSpeed = response.data.wind.speed;
     let condition = response.data.condition.description;
     let iconUrl = response.data.condition.icon_url;
-    console.log(iconUrl);
 
     currentCity.innerHTML = city;
     currentHumidity.innerHTML = `${humidity}%`;
@@ -58,6 +57,12 @@ currentDate.innerHTML = date;
 
 //FORECAST ##
 
+function getForecast(city) {
+  let inputCity = document.querySelector("#search-input");
+  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=$${inputCity.value}&key=${apiKey}&units=metric`;
+  console.log(apiUrlForecast);
+}
+
 function displayForecast() {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur"];
   let forecastHtml = "";
@@ -81,4 +86,5 @@ function displayForecast() {
   forecast.innerHTML = forecastHtml;
 }
 
+getForecast();
 displayForecast();
