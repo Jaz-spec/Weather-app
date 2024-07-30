@@ -1,3 +1,4 @@
+//CURRENT WEATHER - MAIN  ##
 let apiKey = "oa9f439cb230f940atf8b1fac2e41075";
 let searchButton = document.querySelector(".search-button");
 let currentCity = document.querySelector("#current-city");
@@ -34,6 +35,7 @@ function getCity(event) {
   }
 }
 
+//DATE ##
 let now = new Date();
 let hours = now.getHours();
 let minutes = now.getMinutes().toString().padStart(2, "0");
@@ -53,3 +55,30 @@ let date = `${days[day]} ${hours}:${minutes}`;
 let currentDate = document.querySelector("#current-date");
 
 currentDate.innerHTML = date;
+
+//FORECAST ##
+
+function displayForecast() {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast-square">
+    <div class="weather-forecast-day">${day}</div>
+    <div class="weather-forecast-icon">☀️</div>
+  <div class="weather-forecast-temperatures">
+    <div class="weather-forecast-temperature">
+    <strong>19</strong>
+    </div>
+    <div class="weather-forecast-temperature">13</div>
+    </div>
+    </div>`;
+  });
+
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = forecastHtml;
+}
+
+displayForecast();
